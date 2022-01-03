@@ -3,31 +3,39 @@
 <head>
   <title>Personal Library</title>
   <meta charset="UTF-8"/>
-  <link href="//db.onlinewebfonts.com/c/53dc764fd0dbbb3140b7909afd437722?family=Chicago" rel="stylesheet" type="text/css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+  </style> 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="main-container">
-    <div id="inputs-container">
+  <div class="main-container">
+    <div class="header">
       <p>LIBRARY</p>
       
-      <label for="bookTitle">Title?</label>
-      <input type="text" id="bookTitle"></input>
-      
-      <label for="bookAuthor">Author?</label>
-      <input type="text" id="bookAuthor" backgroundColor="red"></input>
-      
-      <label for="numberOfPages">Number of pages?</label>
-      <input type="text" id="numberOfPages"></input>
-      
-      <label for="readStatus">Did you already read it?</label>
-      <input type="checkbox" id="readStatus" name="readStatus" value="read">
+      <button id="showModal">ADD NEW BOOK</button>
+    </div>
 
-      <button id="addBook">ADD NEW BOOK</button>
+    <div id="modal" class="modal-closed">
+      <div class="modal-content">
+        <label for="bookTitle">Title?</label>
+        <input type="text" id="bookTitle"></input>
+        
+        <label for="bookAuthor">Author?</label>
+        <input type="text" id="bookAuthor" backgroundColor="red"></input>
+        
+        <label for="numberOfPages">Number of pages?</label>
+        <input type="text" id="numberOfPages"></input>
+        
+        <label for="readStatus">Did you already read it?</label>
+        <input type="checkbox" id="readStatus" name="readStatus" value="read">
+        
+        <button id="addBook">ADD</button>
+        <button id="closeModal">&times;</button>
+      </div>
     </div>
     
-    <div id="books-container"></div>
-  
+    <div class="books-container"></div>
   </div>
   <script src='library.js'></script>
 </body>

@@ -39,19 +39,19 @@ function createBookCard(book){
     bookDiv.id = book.id;
     bookDiv.classList.add("bookCard");
 
-    bookTitleText = document.createElement("p");
+    bookTitleText = document.createElement("div");
     bookTitleText.textContent = book.title;
     bookDiv.appendChild(bookTitleText);
    
-    bookAuthorText = document.createElement("p");
+    bookAuthorText = document.createElement("div");
     bookAuthorText.textContent = book.author;
     bookDiv.appendChild(bookAuthorText);
     
-    bookNumberOfPagesText = document.createElement("p")
+    bookNumberOfPagesText = document.createElement("div")
     bookNumberOfPagesText.textContent = book.numberOfPages;
     bookDiv.appendChild(bookNumberOfPagesText);
     
-    bookReadStatusText = document.createElement("p")
+    bookReadStatusText = document.createElement("div")
     bookReadStatusText.textContent = book.readMessage;
     bookDiv.appendChild(bookReadStatusText);
     
@@ -118,16 +118,34 @@ function displayLibrary(){
     }
 }
 
-const addBookButton = document.getElementById("addBook");
+function displayModal() {
+    modal.classList.replace("modal-closed", "modal-open");
+}
+
+function hideModal(event) {
+    if (event.target === modal || event.target === closeModal) {
+        modal.classList.replace("modal-open", "modal-closed");
+    }
+}
+
 const bookTitle = document.getElementById("bookTitle");
 const bookAuthor = document.getElementById("bookAuthor");
 const numberOfPages = document.getElementById("numberOfPages");
 const readStatus = document.getElementById("readStatus");
-const booksContainer = document.getElementById("books-container");
+const booksContainer = document.querySelector(".books-container");
+
+const modal = document.getElementById("modal");
+const addBook = document.getElementById("addBook");
+const showModal = document.getElementById("showModal");
+const closeModal = document.getElementById("closeModal");
 
 let mainLibrary = [createBook("title1", "author1", 5, true, 0), 
     createBook("title2", "author2", 6, false, 1),
     createBook("title3", "author3", 7, true, 2)];
 
-addBookButton.addEventListener("click", addBookToLibrary);
+modal.addEventListener("click", hideModal);
+showModal.addEventListener("click", displayModal);
+closeModal.addEventListener("click", hideModal);
+addBook.addEventListener("click", addBookToLibrary);
+
 displayLibrary();
