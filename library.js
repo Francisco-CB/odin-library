@@ -26,6 +26,10 @@ libraryController = (() => {
         createBook("title3", "author3", 7, true, 2)];
 
     function createBook(title, author, pages, read, id) {
+        if (!title || !author || !pages || isNaN(pages) || parseInt(pages) == 0) {
+            return false
+        }
+
         let newBook = new Book(title, author, pages, read, id);
         return newBook
     }
@@ -65,8 +69,6 @@ libraryController = (() => {
     }
 
     function addBookToLibrary(){
-        // EVALUAR MEJORA
-        // EVALUAR CHECKEO DE VALORES (NO ACEPTAR VACÍOS)
         title = bookTitle.value;
         author = bookAuthor.value;
         pages = numberOfPages.value;
@@ -74,9 +76,12 @@ libraryController = (() => {
         id = mainLibrary.length;
     
         newBook = createBook(title, author, pages, read, id);
-        newBookCard = createBookCard(newBook);
-        mainLibrary.push(newBook);
-        addBookCardToDisplay(newBookCard);
+
+        if (newBook) {
+            newBookCard = createBookCard(newBook);
+            mainLibrary.push(newBook);
+            addBookCardToDisplay(newBookCard);
+        }
     }
 
     function addBookCardToDisplay(card) {
