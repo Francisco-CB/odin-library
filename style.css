@@ -14,6 +14,15 @@ body{
     font: larger 'Poppins', sans-serif;
 }
 
+input {
+    border-radius: 5px;
+    border: 2px solid var(--raw-sienna);
+}
+
+button {
+    width: 100%;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -28,6 +37,10 @@ body{
     justify-content: space-between;
     padding: 0 10px;
     background-color: var(--raw-sienna);
+}
+
+.header > #showModal {
+    width: 25%;
 }
 
 .books-container {
@@ -52,7 +65,7 @@ body{
     max-height: 280px;
     flex: 1 1 auto;
     gap: 12px;
-    padding: 10px 0;
+    padding: 10px 15px;
     background-color: var(--black-coffee);
     border: 5px solid var(--black-coffee);
     color: var(--deep-champagne);
@@ -76,8 +89,9 @@ body{
 .modal-content {
     display: flex;
     flex-flow: column;
+    align-items: center;
     gap: 10px;
-    padding: 30px;
+    padding: 20px 30px;
     color: var(--deep-champagne);
     background-color: var(--black-coffee);
     border: 1px solid var(--black-coffee);
@@ -93,4 +107,55 @@ body{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.toggleButton
+{
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin: 5px auto;
+    margin-bottom: 15px;
+    overflow: hidden;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid var(--raw-sienna);
+    background-color: var(--smoky-black);
+}
+
+.checkbox
+{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.knobs
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+#toggle-read .knobs::before
+{
+    content: 'Not read';
+    margin: 0 auto;
+    position: absolute;
+    left: 5%;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#toggle-read .checkbox:checked + .knobs::before
+{
+    content: 'Read';
+    left: 68%;
 }

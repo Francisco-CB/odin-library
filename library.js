@@ -131,7 +131,7 @@ function hideModal(event) {
 const bookTitle = document.getElementById("bookTitle");
 const bookAuthor = document.getElementById("bookAuthor");
 const numberOfPages = document.getElementById("numberOfPages");
-const readStatus = document.getElementById("readStatus");
+const readStatus = document.querySelector("#toggle-read input[name='readToggle']");
 const booksContainer = document.querySelector(".books-container");
 
 const modal = document.getElementById("modal");

@@ -27,11 +27,13 @@
         <label for="numberOfPages">Number of pages?</label>
         <input type="text" id="numberOfPages"></input>
         
-        <label for="readStatus">Did you already read it?</label>
-        <input type="checkbox" id="readStatus" name="readStatus" value="read">
+        <div class="toggleButton" id="toggle-read">
+          <input name="readToggle" type="checkbox" class="checkbox">
+          <div class="knobs"></div>
+        </div>
         
         <button id="addBook">ADD</button>
-        <button id="closeModal">&times;</button>
+        <button id="closeModal">ClOSE</button>
       </div>
     </div>
     
