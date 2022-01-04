@@ -1,21 +1,15 @@
-const Book = {
-    // SE CREA FUNCIÓN INIT PARA PODER INSERTAR PROPIEDADES
-    init: function(title, author, numberOfPages, readStatus, id) {
-        this.title = title,
-        this.author = author,
-        this.numberOfPages = numberOfPages,
-        this.id = id,
-        this.readStatus = readStatus,
-        this.readStatus===true ? this.readMessage = "Already read" : this.readMessage = "Not read yet"
-    },
-
-    info: function() {
-        return `${this.title} by ${this.author}, ${this.numberOfPages} pages, ${this.readMessage}`;
-    },
-
-    updateReadStatus: function(){
-        this.readStatus===true ? this.readStatus = false : this.readStatus = true
-        this.readStatus===true ? this.readMessage = "Already read" : this.readMessage = "Not read yet"
+class Book {
+    constructor(title, author, numberOfPages, readStatus, id) {
+        this.title = title;
+        this.author = author;
+        this.numberOfPages = numberOfPages;
+        this.id = id;
+        readStatus === true ? this.readMessage = "Already read" : this.readMessage = "Not read yet";
+    }
+    
+    updateReadStatus (){
+        this.readStatus === true ? this.readStatus = false : this.readStatus = true
+        this.readStatus === true ? this.readMessage = "Already read" : this.readMessage = "Not read yet"
     }
 }
 
@@ -28,8 +22,9 @@ function changeBookReadStatus(event) {
 }
 
 function createBook(title, author, pages, read, id) {
-    let newBook = Object.create(Book);
-    newBook.init(title, author, pages, read, id);
+    // let newBook = Object.create(Book);
+    // newBook.init(title, author, pages, read, id);
+    let newBook = new Book(title, author, pages, read, id);
     return newBook
 }
 
@@ -128,18 +123,19 @@ function hideModal(event) {
     }
 }
 
+const booksContainer = document.querySelector(".books-container");
+
 const bookTitle = document.getElementById("bookTitle");
 const bookAuthor = document.getElementById("bookAuthor");
 const numberOfPages = document.getElementById("numberOfPages");
 const readStatus = document.querySelector("#toggle-read input[name='readToggle']");
-const booksContainer = document.querySelector(".books-container");
 
 const modal = document.getElementById("modal");
 const addBook = document.getElementById("addBook");
 const showModal = document.getElementById("showModal");
 const closeModal = document.getElementById("closeModal");
 
-let mainLibrary = [createBook("title1", "author1", 5, true, 0), 
+const mainLibrary = [createBook("title1", "author1", 5, true, 0), 
     createBook("title2", "author2", 6, false, 1),
     createBook("title3", "author3", 7, true, 2)];
 
